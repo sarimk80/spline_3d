@@ -12,6 +12,7 @@ struct spline_3dApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
     }
 }

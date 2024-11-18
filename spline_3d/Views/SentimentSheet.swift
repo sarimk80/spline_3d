@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct SentimentSheet: View {
+    
+    @ObservedObject var sentimentVm:SentimentViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            TextField(text: $sentimentVm.textFieldText) {
+                Text("Enter review")
+            }
+            Spacer()
+            Button {
+                sentimentVm.sentimentAnalysis()
+            } label: {
+                Text("Done")
+            }
+            .buttonStyle(.borderedProminent)
+            
+
+        }
+        .padding()
     }
 }
 
 #Preview {
-    SentimentSheet()
+    SentimentSheet(
+        sentimentVm: SentimentViewModel(sentimentServices: .shared)
+    )
 }
